@@ -18,12 +18,15 @@ test('Initial condition of checkbox is unchecked', () => {
   expect(checkbox).not.toBeChecked()
 })
 
-test('Button becomes disabled if checkbox checked and enabled if checkbox is unchecked', () => {
+test('Button becomes disabled and turns grey if checkbox checked and enabled and standard color if checkbox is unchecked', () => {
   render(<App />);
   const checkbox = screen.getByRole('checkbox', {name: 'Disable Button'})
   const button = screen.getByRole('button')
   fireEvent.click(checkbox)
   expect(button).not.toBeEnabled()
+  expect (button).toHaveStyle({backgroundColor: 'grey'})
   fireEvent.click(checkbox)
   expect(button).toBeEnabled()
+  expect (button).not.toHaveStyle({backgroundColor: 'grey'})
+
 })
