@@ -1,6 +1,10 @@
 import React, {useState} from 'react';
 import './App.css';
 
+export const replaceCamelcaseWithSpaces = color => {
+  return color.replace(/\B([A-Z])\B/g, ' $1')
+}
+
 function App() {
   const [btnColor, setBtnColor] = useState('red');
   const newBtnColor = btnColor === 'red' ? 'blue' : 'red';
